@@ -240,7 +240,7 @@ abstract class Wechat implements GatewayInterface
                 ]
             ));
         } else {
-            $httpCode = $this->getHttpCurl(1, $this->endpoint, 1);
+            $httpCode = $this->getHttpCurl(1, $this->endpoint.$path, 1);
             if($httpCode && $httpCode['httpCode'] != 200){//如果请求失败，调用备用地址
                 $data = $this->fromXml($this->post($this->endpoint2.$path, $this->toXml($this->config)));
             }else{
