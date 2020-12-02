@@ -243,7 +243,9 @@ abstract class Wechat implements GatewayInterface
             $httpCode = $this->getHttpCurl(1, $this->endpoint.$path, 1);
             if($httpCode && $httpCode['httpCode'] != 200){//如果请求失败，调用备用地址
                 $data = $this->fromXml($this->post($this->endpoint2.$path, $this->toXml($this->config)));
+                Log::debug('order/wechat', '请求'.$this->endpoint2.$path);
             }else{
+                Log::debug('order/wechat', '请求'.$this->endpoint.$path);
                 $data = $this->fromXml($this->post($this->endpoint.$path, $this->toXml($this->config)));
             }
         }
@@ -258,7 +260,7 @@ abstract class Wechat implements GatewayInterface
         }
 
         if (isset($error)) {
-            Log::error('order/mbupay', '异常信息: ' . $error );
+            Log::error('order/wechat', '异常信息: ' . $error );
             throw new GatewayException(
                 $error,
                 20000,
