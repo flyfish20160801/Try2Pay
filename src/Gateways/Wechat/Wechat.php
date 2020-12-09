@@ -17,7 +17,7 @@ abstract class Wechat implements GatewayInterface
      * @var string
      */
     protected $endpoint = 'https://api.mch.weixin.qq.com/';
-    protected $endpoint2 = 'https://api.weixin.qq.com/';
+    protected $endpoint2 = 'https://api2.mch.weixin.qq.com/';
     protected $timeout = 5;
 
     /**
